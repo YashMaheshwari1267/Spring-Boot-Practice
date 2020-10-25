@@ -9,6 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FunRestController {
 	
+	//injecting properties
+	
+	@Value("${coach.name}")
+	private String coachName;
+	
+	@Value("${team.name}")
+	private String teamName;
+	
+	@GetMapping("/teaminfo")
+	public String getTeamInfo() {
+		return coachName+"-"+teamName;
+	}
+	
 	@GetMapping("/")
 	public String sayHello() {
 		return "Hello World! Time on server is " + LocalDateTime.now();
